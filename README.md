@@ -128,18 +128,6 @@ Strategy Sharpe : 0.0541 | Max Drawdown: -0.2420
 
 ```
 
-Example Plot
-```python
-import matplotlib.pyplot as plt
-
-plt.plot(actual_prices, label='Actual')
-plt.plot(predicted_prices, label='Predicted')
-plt.legend()
-plt.title("Prediction vs Actual Prices")
-plt.show()
-```
-![Prediction vs Actual](plots/Prediction vs Actual.png)
-
 ---
 ## 📌 Example Trading Rule
 
