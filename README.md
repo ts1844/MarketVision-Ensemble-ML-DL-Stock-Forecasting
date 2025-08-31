@@ -72,10 +72,8 @@ Strategy Sharpe : 0.0541 | Max Drawdown: -0.2420
 ┣ 📜 MarketVision_Stock_Forecasting.ipynb # Main notebook
 ┣ 📜 requirements.txt # Dependencies
 ┣ 📜 README.md # Documentation
-┣ 📂 data/ # Cached stock datasets
-┣ 📂 plots/ # Charts & backtest results
-┗ 📂 models/ # Saved models (optional)
-
+┗ 📂 plots/ # Charts & backtest results
+ 
 ---
 
 
@@ -96,6 +94,29 @@ View predictions + ensemble signal + backtest summary.
 
 ---
 
+## 📊 Data
+This project uses publicly available stock price data from **[Yahoo Finance](https://finance.yahoo.com/)**.  
+No raw data is stored in this repository to keep it lightweight.  
+
+You can fetch fresh data anytime using the helper script/notebook:  
+
+```bash
+python src/download_data.py --ticker AAPL --period 1y
+```
+---
+## 🧠 Models
+This project combines both **Machine Learning** and **Deep Learning** models for stock forecasting:
+
+- **Linear Regression**  
+- **Decision Tree Regressor**  
+- **Random Forest Regressor**  
+- **XGBoost Regressor**  
+- **LSTM (Long Short-Term Memory)**  
+- **Ensemble Model** (aggregates multiple predictions for a stronger signal)
+
+The ensemble approach helps reduce noise and improves the reliability of **BUY / HOLD / SELL** signals.
+
+---
 ## 📌 Example Trading Rule
 
 BUY → Expected return ≥ +0.5%
@@ -103,7 +124,9 @@ BUY → Expected return ≥ +0.5%
 SELL → Expected return ≤ -0.5%
 
 HOLD → Otherwise
+
 ---
+
 ## 🧠 Future Enhancements
 
 📈 Multi-stock portfolio optimization
@@ -114,13 +137,18 @@ HOLD → Otherwise
 
 🌐 API + Streamlit dashboard for live trading signals
 
+---
+
 ## 📜 License
 
 This project is licensed under the MIT License.
+
+---
 
 ## 👤 Author
 
 Tamilarasan S — Data Science Enthusiast
 
-🔗 [GitHub](https://github.com/ts1844) |  
-💼 [LinkedIn](https://linkedin.com/in/tamilarasans018)  
+🔗 [GitHub](https://github.com/ts1844)        |          💼 [LinkedIn](https://linkedin.com/in/tamilarasans018)  
+
+---
