@@ -30,6 +30,80 @@ It integrates **ML models** (Linear Regression, Random Forest, XGBoost) with an 
 
 ---
 
+## 📂 Repository Structure  
+
+📦 MarketVision-Ensemble-ML-DL-Stock-Forecasting
+┣ 📜 MarketVision_Stock_Forecasting.ipynb # Main notebook
+┣ 📜 requirements.txt # Dependencies
+┣ 📜 README.md # Documentation
+┗ 📂 plots/ # Stores all generated charts and backtest results automatically (e.g., `plots/candlestick_AAPL.png`)  
+ 
+
+
+---
+
+## ⚙️ Tech Stack  
+- **Languages** → Python (Pandas, NumPy, Matplotlib, Seaborn)  
+- **ML Models** → Scikit-learn, XGBoost  
+- **DL Models** → TensorFlow/Keras (Bi-LSTM + Attention)  
+- **Explainability** → SHAP  
+- **Data Source** → Yahoo Finance (`yfinance`)  
+
+---
+
+
+
+
+# Install dependencies
+pip install -r requirements.txt
+
+---
+
+## ▶️ Usage
+
+Jupyter Notebook
+jupyter notebook MarketVision_Stock_Forecasting.ipynb
+
+VSCode
+code MarketVision_Stock_Forecasting.ipynb
+
+
+1.Open the notebook
+2.Enter your desired stock symbol (e.g., AAPL, TSLA).
+3.View predictions + ensemble signal + backtest summary.
+
+---
+
+## 📊 Data
+This project uses publicly available stock price data from **[Yahoo Finance](https://finance.yahoo.com/)**.  
+No raw data is stored in this repository to keep it lightweight.  
+
+You can fetch fresh data anytime using the helper script/notebook:  
+
+```bash
+python src/download_data.py --ticker AAPL --period 1y
+```
+---
+
+
+## 🧠 Models
+This project combines both **Machine Learning** and **Deep Learning** models for stock forecasting:
+
+- **Linear Regression**  
+- **Decision Tree Regressor**  
+- **Random Forest Regressor**  
+- **XGBoost Regressor**  
+- **LSTM (Long Short-Term Memory)**  
+- **Ensemble Model** (aggregates multiple predictions for a stronger , more reliable signal).
+
+Why Ensemble?
+
+Combining multiple model predictions reduces individual model errors and improves directional accuracy, making BUY / HOLD / SELL signals more robust.
+
+
+---
+
+
 ## 📊 Example Output  
 ```text
 
@@ -54,67 +128,17 @@ Strategy Sharpe : 0.0541 | Max Drawdown: -0.2420
 
 ```
 
+Example Plot
+```python
+import matplotlib.pyplot as plt
 
----
-
-## ⚙️ Tech Stack  
-- **Languages** → Python (Pandas, NumPy, Matplotlib, Seaborn)  
-- **ML Models** → Scikit-learn, XGBoost  
-- **DL Models** → TensorFlow/Keras (Bi-LSTM + Attention)  
-- **Explainability** → SHAP  
-- **Data Source** → Yahoo Finance (`yfinance`)  
-
----
-
-## 📂 Repository Structure  
-
-📦 MarketVision-Ensemble-ML-DL-Stock-Forecasting
-┣ 📜 MarketVision_Stock_Forecasting.ipynb # Main notebook
-┣ 📜 requirements.txt # Dependencies
-┣ 📜 README.md # Documentation
-┗ 📂 plots/ # Charts & backtest results
- 
----
-
-
-# Install dependencies
-pip install -r requirements.txt
-
----
-
-## ▶️ Usage
-
-Open Jupyter Notebook / VSCode.
-
-Run MarketVision_Stock_Forecasting.ipynb.
-
-Enter your desired stock symbol (e.g., AAPL, TSLA).
-
-View predictions + ensemble signal + backtest summary.
-
----
-
-## 📊 Data
-This project uses publicly available stock price data from **[Yahoo Finance](https://finance.yahoo.com/)**.  
-No raw data is stored in this repository to keep it lightweight.  
-
-You can fetch fresh data anytime using the helper script/notebook:  
-
-```bash
-python src/download_data.py --ticker AAPL --period 1y
+plt.plot(actual_prices, label='Actual')
+plt.plot(predicted_prices, label='Predicted')
+plt.legend()
+plt.title("Prediction vs Actual Prices")
+plt.show()
 ```
----
-## 🧠 Models
-This project combines both **Machine Learning** and **Deep Learning** models for stock forecasting:
-
-- **Linear Regression**  
-- **Decision Tree Regressor**  
-- **Random Forest Regressor**  
-- **XGBoost Regressor**  
-- **LSTM (Long Short-Term Memory)**  
-- **Ensemble Model** (aggregates multiple predictions for a stronger signal)
-
-The ensemble approach helps reduce noise and improves the reliability of **BUY / HOLD / SELL** signals.
+![Prediction vs Actual](plots/Prediction vs Actual.png)
 
 ---
 ## 📌 Example Trading Rule
@@ -124,6 +148,7 @@ BUY → Expected return ≥ +0.5%
 SELL → Expected return ≤ -0.5%
 
 HOLD → Otherwise
+
 
 ---
 
